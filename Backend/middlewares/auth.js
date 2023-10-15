@@ -11,7 +11,7 @@ let auth = async (req, res, next) => {
   if (!JAA_access_token) {
     return res.status(400).send({ msg: "Please login!" });
   } else {
-    const isTokenBlacklisted = await client.get(JAA_access_token);
+    const isTokenBlacklisted = await client.get(JAA_access_token)
 
     if (isTokenBlacklisted !== null) {
       return res.send({ msg: "please login again, already logged out" });
